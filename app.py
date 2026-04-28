@@ -13,7 +13,7 @@ app.register_blueprint(student_bp)
 app.register_blueprint(billing_bp)
 app.register_blueprint(instructor_bp)
 
-# base html template used across the app
+# base html template can ve used in other
 BASE_HTML = '''
 <!doctype html>
 <html lang="en">
