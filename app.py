@@ -42,7 +42,7 @@ th{background:#f1f5f9}
 {% if session.get('user') %}
 <nav>
   <a href="/dashboard">Dashboard</a>
-  <a href="/students">Students</a>
+  <a href="/student-enrollment">Students</a>
   <a href="/courses">Courses</a>
   <a href="/billing">Billing</a>
   <a href="/admin">Admin</a>

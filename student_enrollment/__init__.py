@@ -1,7 +1,7 @@
 from flask import Blueprint, request, redirect, url_for
 
-student_enrollment = Blueprint(
-    "student_enrollment",
+student_bp = Blueprint(
+    "student_bp",
     __name__,
     template_folder="templates"
 )
@@ -15,8 +15,8 @@ courses = [
     "Medical Assistant Basic"
 ]
 
-@student_enrollment.route("/student-enrollment")
-def enrollment_home():
+@student_bp.route("/student-enrollment")
+def bp_home():
     return """
     <h1>Student Enrollment</h1>
     <p>Welcome to the Student Enrollment module.</p>
@@ -29,7 +29,7 @@ def enrollment_home():
     <a href="/dashboard">Back to Dashboard</a>
     """
 
-@student_enrollment.route("/student-enrollment/enroll", methods=["GET", "POST"])
+@student_bp.route("/student-enrollment/enroll", methods=["GET", "POST"])
 def enroll_student():
     if request.method == "POST":
         student_id = request.form.get("student_id")
@@ -44,7 +44,7 @@ def enroll_student():
             "enrollment_date": enrollment_date
         })
 
-        return redirect(url_for("student_enrollment.view_enrollments"))
+        return redirect(url_for("student_bp.view_enrollments"))
 
     course_options = ""
     for course in courses:
@@ -75,7 +75,7 @@ def enroll_student():
     <a href="/student-enrollment">Back to Student Enrollment</a>
     """
 
-@student_enrollment.route("/student-enrollment/list")
+@student_bp.route("/student-enrollment/list")
 def view_enrollments():
     rows = ""
 
