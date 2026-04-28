@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, request, redirect, url_for
 
 student_enrollment = Blueprint(
     "student_enrollment",
@@ -27,8 +27,9 @@ def enrollment_home():
     </ul>
 
     <a href="/dashboard">Back to Dashboard</a>
+    """
 
-@student_enrollment.route("/student-enrollment/enroll", methods=["GET", "POST])
+@student_enrollment.route("/student-enrollment/enroll", methods=["GET", "POST"])
 def enroll_student():
     if request.method == "POST":
         student_id = request.form.get("student_id")
@@ -76,13 +77,13 @@ def enroll_student():
 
 @student_enrollment.route("/student-enrollment/list")
 def view_enrollments():
-    rows= ""
-    
+    rows = ""
+
     for enrollment in enrollments:
         rows += f"""
         <tr>
-            <td>{enrollment["student_id]}</td>
-            <td>{enrollment["student_name]}</td>
+            <td>{enrollment["student_id"]}</td>
+            <td>{enrollment["student_name"]}</td>
             <td>{enrollment["course"]}</td>
             <td>{enrollment["enrollment_date"]}</td>
         </tr>
