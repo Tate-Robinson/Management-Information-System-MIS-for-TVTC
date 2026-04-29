@@ -12,47 +12,7 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(student_bp)
 app.register_blueprint(billing_bp)
 app.register_blueprint(instructor_bp)
-
-# base html template can ve used in other
-BASE_HTML = '''
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ title }}</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;background:#f4f6f8}
-nav{background:#1f2937;color:#fff;padding:14px}
-nav a{color:#fff;text-decoration:none;margin-right:18px;font-weight:bold}
-.container{max-width:1000px;margin:30px auto;padding:20px}
-.card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:20px}
-input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
-button{background:#2563eb;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.metric{font-size:28px;font-weight:bold}
-.small{color:#666}
-.error{color:#b91c1c}
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px;border:1px solid #ddd;text-align:left}
-th{background:#f1f5f9}
-</style>
-</head>
-<body>
-{% if session.get('user') %}
-<nav>
-  <a href="/dashboard">Dashboard</a>
-  <a href="/student-enrollment">Students</a>
-  <a href="/courses">Courses</a>
-  <a href="/billing">Billing</a>
-  <a href="/admin">Admin</a>
-  <a href="/logout">Logout</a>
-</nav>
-{% endif %}
-<div class="container">{{ content|safe }}</div>
-</body>
-</html>
-'''
+from base_template import BASE_HTML
 
 # hardcoded users for now, can be swapped out for a database later
 USERS = {
